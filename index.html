@@ -445,6 +445,7 @@
 <section class="hero" id="top">
   <video class="hero__media" autoplay muted loop playsinline preload="auto"
          poster="https://pauly-ceo.github.io/ananta-canggu-assets/hero-poster.jpg">
+    <source media="(max-width: 900px)" src="https://pauly-ceo.github.io/ananta-canggu-assets/hero-m.mp4" type="video/mp4">
     <source src="https://pauly-ceo.github.io/ananta-canggu-assets/hero.mp4" type="video/mp4">
   </video>
   <div class="hero__inner">
@@ -475,10 +476,10 @@
 
 <!-- PILLAR 1 — ARCHITECTURE -->
 <section class="pillar" id="architecture">
-  <video class="pillar__media" autoplay muted loop playsinline preload="metadata"
-         poster="https://pauly-ceo.github.io/ananta-canggu-assets/surf-poster.jpg">
-    <source src="https://pauly-ceo.github.io/ananta-canggu-assets/surf.mp4" type="video/mp4">
-  </video>
+  <video class="pillar__media lazy-video" muted loop playsinline preload="none"
+         poster="https://pauly-ceo.github.io/ananta-canggu-assets/surf-poster.jpg"
+         data-src-m="https://pauly-ceo.github.io/ananta-canggu-assets/surf-m.mp4"
+         data-src-d="https://pauly-ceo.github.io/ananta-canggu-assets/surf.mp4"></video>
   <div class="pillar__inner">
     <div class="pillar__col">
       <div class="pillar__num fade">02 · Architecture</div>
@@ -490,10 +491,10 @@
 
 <!-- PILLAR 2 — HOSPITALITY -->
 <section class="pillar" id="hospitality">
-  <video class="pillar__media" autoplay muted loop playsinline preload="metadata"
-         poster="https://pauly-ceo.github.io/ananta-canggu-assets/canggu-poster.jpg">
-    <source src="https://pauly-ceo.github.io/ananta-canggu-assets/canggu.mp4" type="video/mp4">
-  </video>
+  <video class="pillar__media lazy-video" muted loop playsinline preload="none"
+         poster="https://pauly-ceo.github.io/ananta-canggu-assets/canggu-poster.jpg"
+         data-src-m="https://pauly-ceo.github.io/ananta-canggu-assets/canggu-m.mp4"
+         data-src-d="https://pauly-ceo.github.io/ananta-canggu-assets/canggu.mp4"></video>
   <div class="pillar__inner">
     <div class="pillar__col">
       <div class="pillar__num fade">03 · Hospitality</div>
@@ -505,10 +506,10 @@
 
 <!-- PILLAR 3 — INVESTMENT -->
 <section class="pillar" id="investment-pillar">
-  <video class="pillar__media" autoplay muted loop playsinline preload="metadata"
-         poster="https://pauly-ceo.github.io/ananta-canggu-assets/reach-poster.jpg">
-    <source src="https://pauly-ceo.github.io/ananta-canggu-assets/reach.mp4" type="video/mp4">
-  </video>
+  <video class="pillar__media lazy-video" muted loop playsinline preload="none"
+         poster="https://pauly-ceo.github.io/ananta-canggu-assets/reach-poster.jpg"
+         data-src-m="https://pauly-ceo.github.io/ananta-canggu-assets/reach-m.mp4"
+         data-src-d="https://pauly-ceo.github.io/ananta-canggu-assets/reach.mp4"></video>
   <div class="pillar__inner">
     <div class="pillar__col">
       <div class="pillar__num fade">04 · Investment</div>
@@ -683,7 +684,30 @@
     v.addEventListener('canplay', tryPlay, {once:true});
     v.addEventListener('loadedmetadata', tryPlay, {once:true});
   };
-  document.querySelectorAll('video').forEach(armVideo);
+  // Arm only hero immediately
+  const heroVideoEl = document.querySelector('.hero__media');
+  if(heroVideoEl) armVideo(heroVideoEl);
+
+  // Lazy-load pillar/gallery videos on intersection — pick mobile or desktop source
+  const isMobile = matchMedia('(max-width: 900px)').matches;
+  const lazyVideoIO = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const v = e.target;
+      if(v.dataset.loaded) return;
+      const src = isMobile ? v.dataset.srcM : v.dataset.srcD;
+      if(src){
+        const s = document.createElement('source');
+        s.src = src; s.type = 'video/mp4';
+        v.appendChild(s);
+        v.load();
+        v.dataset.loaded = '1';
+        armVideo(v);
+      }
+      lazyVideoIO.unobserve(v);
+    });
+  }, {rootMargin: '600px 0px 600px 0px'});
+  document.querySelectorAll('.lazy-video').forEach(v=>lazyVideoIO.observe(v));
 
   const heroVid = document.querySelector('.hero__media');
   if(heroVid){
