@@ -125,25 +125,6 @@
   .hero__pack:hover{opacity:.8;gap:14px;border-color:#fff}
   .hero__pack-meta{font-weight:400;letter-spacing:.16em;opacity:.7;margin-left:4px}
 
-  /* SOUND TOGGLE */
-  .sound{
-    position:fixed;bottom:28px;right:28px;z-index:40;
-    display:flex;align-items:center;gap:10px;
-    font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
-    color:#fff;padding:8px 14px;
-    background:rgba(0,0,0,.28);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-    opacity:0;transition:opacity .5s var(--ease), background var(--t-base);pointer-events:none;
-  }
-  .sound.is-visible{opacity:1;pointer-events:auto}
-  .sound:hover{background:rgba(0,0,0,.5)}
-  .sound__bars{display:inline-flex;align-items:flex-end;gap:2px;height:11px}
-  .sound__bars span{display:block;width:2px;background:#fff;animation:soundBar 1.2s var(--ease) infinite}
-  .sound__bars span:nth-child(1){height:60%;animation-delay:0s}
-  .sound__bars span:nth-child(2){height:100%;animation-delay:.2s}
-  .sound__bars span:nth-child(3){height:40%;animation-delay:.4s}
-  @keyframes soundBar{0%,100%{transform:scaleY(.5)}50%{transform:scaleY(1)}}
-  .sound[data-muted="true"] .sound__bars span{animation:none;transform:scaleY(.3)}
-
   /* SECTIONS */
   section{position:relative}
   .sec{padding:var(--sp-section) var(--sp-section-x)}
@@ -315,6 +296,12 @@
     color:var(--ink);margin:0;max-width:920px;margin-inline:auto;
   }
   .renders__intro h2 em{font-style:italic}
+  .renders__credit{
+    margin:28px auto 0;font-size:13px;letter-spacing:.02em;color:var(--ink-70);
+    font-family:var(--f-body);font-weight:400;max-width:680px;
+  }
+  .renders__credit a{border-bottom:1px solid var(--ink-30);padding-bottom:1px}
+  .renders__credit a:hover{border-color:var(--ink)}
   .render{
     position:relative;width:100%;
     margin-bottom:48px;
@@ -560,6 +547,7 @@
   <div class="renders__intro">
     <div class="eb fade">The vision</div>
     <h2 class="fade d1">Sculpted architecture where greenery becomes <em>part of the building.</em></h2>
+    <p class="renders__credit fade d2">Designed by <a href="https://www.identitydesigners.com/" target="_blank" rel="noopener">Studio Identity Designers</a> · Built by <a href="https://www.thierra.com" target="_blank" rel="noopener">Thierra Construction</a></p>
   </div>
 
   <div class="render fade">
@@ -679,11 +667,6 @@
   <div><a href="https://www.myresorts.eu/" target="_blank" rel="noopener">myresorts.eu</a></div>
 </footer>
 
-<!-- SOUND TOGGLE -->
-<button class="sound" id="sound" data-muted="true" type="button" aria-label="Toggle sound">
-  <span class="sound__bars"><span></span><span></span><span></span></span>
-  <span id="sound-label">Sound off</span>
-</button>
 
 <script>
 (()=>{
@@ -735,44 +718,6 @@
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
   },{threshold:.12, rootMargin:'0px 0px -8% 0px'});
   document.querySelectorAll('.fade').forEach(el=>io.observe(el));
-
-  const soundBtn = document.getElementById('sound');
-  const soundLabel = document.getElementById('sound-label');
-  const showSoundIO = new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(!e.isIntersecting) soundBtn.classList.add('is-visible');
-      else soundBtn.classList.remove('is-visible');
-    });
-  },{threshold:0, rootMargin:'-50% 0px 0px 0px'});
-  showSoundIO.observe(document.querySelector('.hero'));
-
-  /* Sound: play audio only on the video most centered in viewport */
-  let soundOn = false;
-  const videos = Array.from(document.querySelectorAll('video'));
-  const isInCenter = (v) => {
-    const r = v.getBoundingClientRect();
-    const mid = window.innerHeight / 2;
-    return r.top < mid && r.bottom > mid;
-  };
-  const applyAudio = () => {
-    if(!soundOn){ videos.forEach(v => v.muted = true); return; }
-    let chosen = null;
-    for(const v of videos){ if(isInCenter(v)){ chosen = v; break; } }
-    videos.forEach(v => v.muted = (v !== chosen));
-    if(chosen){ chosen.play().catch(()=>{}); }
-  };
-  soundBtn.addEventListener('click', ()=>{
-    soundOn = !soundOn;
-    soundBtn.dataset.muted = soundOn ? 'false' : 'true';
-    soundLabel.textContent = soundOn ? 'Sound on' : 'Sound off';
-    applyAudio();
-  });
-  let scrollT;
-  window.addEventListener('scroll', () => {
-    if(!soundOn) return;
-    clearTimeout(scrollT);
-    scrollT = setTimeout(applyAudio, 180);
-  }, {passive:true});
 
   if(matchMedia('(prefers-reduced-motion: reduce)').matches){
     document.querySelectorAll('.fade').forEach(el=>el.classList.add('in'));
