@@ -261,14 +261,45 @@
 
   /* CONTACT */
   .contact{padding:var(--sp-section) var(--sp-section-x);background:var(--cream-3)}
-  .contact__inner{max-width:980px;margin:0 auto;text-align:center}
-  .contact .lead{margin:32px auto 48px;font-style:italic}
+  .contact__grid{
+    max-width:1240px;margin:0 auto;
+    display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:96px;align-items:center;
+  }
+  .contact__portrait{
+    position:relative;width:100%;aspect-ratio:3/4;overflow:hidden;background:var(--cream-2);
+  }
+  .contact__portrait img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 18%;
+    filter:grayscale(8%) contrast(.98);
+  }
+  .contact__rhs h3{
+    font-family:var(--f-display);font-weight:300;
+    font-size:clamp(38px,4.6vw,68px);line-height:1.04;letter-spacing:-.02em;
+    margin:24px 0 0;color:var(--ink);
+  }
+  .contact__rhs h3 em{font-style:italic;font-weight:300}
+  .contact__person{
+    margin:36px 0 0;display:flex;flex-direction:column;gap:4px;
+    font-size:14px;letter-spacing:.02em;color:var(--ink-70);
+  }
+  .contact__person strong{
+    font-family:var(--f-body);font-weight:600;font-size:15px;letter-spacing:.01em;color:var(--ink);
+  }
+  .contact__role{font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-50);margin-top:4px}
+  .contact__cta{display:inline-flex;margin-top:36px}
   .contact__direct{
-    margin-top:64px;display:flex;justify-content:center;gap:48px;flex-wrap:wrap;
+    margin-top:28px;display:flex;gap:32px;flex-wrap:wrap;
     font-size:13px;letter-spacing:.02em;color:var(--ink-70);
   }
   .contact__direct a{border-bottom:1px solid var(--ink-30);padding-bottom:2px}
   .contact__direct a:hover{border-color:var(--ink)}
+  @media(max-width:860px){
+    .contact__grid{grid-template-columns:1fr;gap:48px}
+    .contact__portrait{aspect-ratio:3/4;max-width:360px;margin:0 auto}
+    .contact__rhs{text-align:center}
+    .contact__person{align-items:center}
+    .contact__direct{justify-content:center}
+  }
 
   /* FOOTER */
   footer{
@@ -431,18 +462,25 @@
 
 <!-- CONTACT -->
 <section class="contact" id="inquire">
-  <div class="contact__inner">
-    <div class="eb fade" style="justify-content:center">06 · Speak with us</div>
-    <p class="lead fade d1">
-      We're a small team. We'd rather talk than send you a form. Tell us about you — we usually reply the same day.
-    </p>
-    <a href="mailto:kristyna@myresorts.eu?subject=Ananta%20Canggu%20%E2%80%94%20Inquiry" class="link fade d2">
-      Send us a note
-      <span class="link__arrow">→</span>
-    </a>
-    <div class="contact__direct fade d3">
-      <a href="mailto:kristyna@myresorts.eu">kristyna@myresorts.eu</a>
-      <a href="https://wa.me/420721833114">WhatsApp +420 721 833 114</a>
+  <div class="contact__grid">
+    <div class="contact__portrait fade">
+      <img src="https://pauly-ceo.github.io/ananta-canggu-assets/kristyna.jpg" alt="Kristýna Pauly — CEO, MyResorts Bali" loading="lazy">
+    </div>
+    <div class="contact__rhs fade d1">
+      <div class="eb">06 · Speak with Kristýna</div>
+      <h3>She'll show you Ananta <em>before anyone else does.</em></h3>
+      <div class="contact__person">
+        <strong>Kristýna Pauly</strong>
+        <span class="contact__role">CEO · MyResorts Bali</span>
+      </div>
+      <a href="mailto:kristyna@myresorts.eu?subject=Ananta%20Canggu%20%E2%80%94%20Inquiry" class="link contact__cta">
+        Write to Kristýna
+        <span class="link__arrow">→</span>
+      </a>
+      <div class="contact__direct">
+        <a href="mailto:kristyna@myresorts.eu">kristyna@myresorts.eu</a>
+        <a href="https://wa.me/420721833114">WhatsApp +420 721 833 114</a>
+      </div>
     </div>
   </div>
 </section>
