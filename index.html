@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Ananta — 36 design-led residences in Canggu, Bali</title>
-<meta name="description" content="Three buildings, 36 organic-architecture residences in Canggu, Bali. Designed by Studio Identity Designers · Built by Thierra Construction · Operated by MyResorts. Phase 1 from $199K. Keys Q2 2028.">
+<meta name="description" content="Three buildings, 36 organic-architecture residences in Canggu, Bali. Designed by Studio Identity Designers · Built by Thierra Construction · Operated by MyResorts. Phase 1 from $191K. Keys Q2 2028.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -259,6 +259,79 @@
   .gallery{position:relative;background:var(--ink)}
   .gallery__video{display:block;width:100%;height:auto;max-height:100vh;object-fit:cover}
 
+  /* WHY NOW · dark */
+  .whynow{padding:160px var(--sp-section-x);background:var(--ink);color:var(--cream-3)}
+  .whynow__inner{max-width:1240px;margin:0 auto;text-align:center}
+  .whynow .eb{margin:0 auto 28px;justify-content:center;color:rgba(241,240,239,.55)}
+  .whynow .eb::before{background:rgba(241,240,239,.3)}
+  .whynow h2{
+    font-family:var(--f-display);font-weight:300;
+    font-size:clamp(36px,4.6vw,72px);line-height:1.08;letter-spacing:-.022em;
+    color:var(--cream-3);margin:0 auto;max-width:980px;
+  }
+  .whynow h2 em{font-style:italic;color:#d9b59a}
+  .whynow__stats{
+    margin-top:84px;display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+    border-top:1px solid rgba(241,240,239,.2);
+  }
+  .whynow__stat{
+    padding:48px 24px 36px;text-align:center;
+    border-right:1px solid rgba(241,240,239,.2);
+  }
+  .whynow__stat:last-child{border-right:0}
+  .whynow__big{
+    font-family:var(--f-display);font-weight:300;
+    font-size:clamp(48px,6vw,92px);line-height:.95;letter-spacing:-.025em;
+    color:var(--cream-3);margin:0;
+  }
+  .whynow__big small{font-size:.32em;font-weight:400;letter-spacing:0;display:inline-block;margin-left:.12em;vertical-align:.55em;opacity:.7}
+  .whynow__cap{
+    margin-top:18px;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+    color:rgba(241,240,239,.55);max-width:240px;margin-left:auto;margin-right:auto;
+  }
+  .whynow__src{margin-top:64px;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(241,240,239,.4)}
+  @media(max-width:780px){
+    .whynow{padding:96px 22px}
+    .whynow__stats{grid-template-columns:1fr;border-top:1px solid rgba(241,240,239,.2)}
+    .whynow__stat{border-right:0;border-bottom:1px solid rgba(241,240,239,.2)}
+    .whynow__stat:last-child{border-bottom:0}
+  }
+
+  /* RENDERS gallery */
+  .renders{background:var(--cream-1)}
+  .renders__intro{padding:140px var(--sp-section-x) 64px;text-align:center}
+  .renders__intro .eb{margin:0 auto 24px;justify-content:center}
+  .renders__intro h2{
+    font-family:var(--f-display);font-weight:300;
+    font-size:clamp(40px,5vw,76px);line-height:1.04;letter-spacing:-.02em;
+    color:var(--ink);margin:0;max-width:920px;margin-inline:auto;
+  }
+  .renders__intro h2 em{font-style:italic}
+  .render{
+    position:relative;width:100%;
+    margin-bottom:48px;
+  }
+  .render:last-child{margin-bottom:0}
+  .render__img{
+    width:100%;height:auto;display:block;
+    object-fit:cover;
+  }
+  .render--tall .render__img{aspect-ratio:16/10;object-fit:cover}
+  .render--split{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:0 var(--sp-section-x)}
+  .render--split img{width:100%;aspect-ratio:4/3;object-fit:cover}
+  .render__cap{
+    padding:18px var(--sp-section-x) 0;
+    font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-50);
+    max-width:1320px;margin:0 auto;
+  }
+  .renders__outro{padding:0 var(--sp-section-x) 140px}
+  @media(max-width:780px){
+    .render--split{grid-template-columns:1fr;gap:24px}
+    .render--split img{aspect-ratio:4/3}
+    .renders__intro{padding:90px 22px 48px}
+    .renders__outro{padding-bottom:90px}
+  }
+
   /* NUMBERS strip */
   .numbers{padding:140px var(--sp-section-x);background:var(--cream-2)}
   .numbers__inner{max-width:1320px;margin:0 auto}
@@ -383,7 +456,7 @@
     <div class="hero__bottom">
       <div class="hero__scroll"><span>Scroll</span><span class="hero__scroll-line"></span></div>
       <div class="hero__meta">
-        Phase 1 · from $199K<br>
+        Phase 1 · from $191K<br>
         <span style="opacity:.7">36 units · 3 buildings · Q2 2028</span>
       </div>
     </div>
@@ -440,9 +513,61 @@
     <div class="pillar__col">
       <div class="pillar__num fade">04 · Investment</div>
       <h2 class="pillar__title fade d1">Investment.</h2>
-      <p class="pillar__body fade d2">Designed to hold its value and produce yield. Leasehold to 2050 plus extension. Phase 1 priced from $199K. The numbers — and the operating model behind them — below.</p>
+      <p class="pillar__body fade d2">Designed to hold its value and produce yield. Phase 1 VIP entry pricing from $191K — for the first nine buyers only. The numbers, the operating model and the full investor pack below.</p>
     </div>
   </div>
+</section>
+
+<!-- WHY NOW · CANGGU -->
+<section class="whynow" id="whynow">
+  <div class="whynow__inner">
+    <div class="eb fade">Why now · The Brooklyn of Bali</div>
+    <h2 class="fade d1">Canggu property prices rose <em>+50 %</em> since 2019 — and consensus forecasts point to another <em>+45–80 %</em> over the next five years.</h2>
+    <div class="whynow__stats">
+      <div class="whynow__stat fade">
+        <p class="whynow__big">+50<small>%</small></p>
+        <div class="whynow__cap">Canggu prices since 2019</div>
+      </div>
+      <div class="whynow__stat fade d1">
+        <p class="whynow__big">7–15<small>%</small></p>
+        <div class="whynow__cap">Annual price growth · forecast</div>
+      </div>
+      <div class="whynow__stat fade d2">
+        <p class="whynow__big">+45–80<small>%</small></p>
+        <div class="whynow__cap">Cumulative 5-year forecast</div>
+      </div>
+    </div>
+    <div class="whynow__src fade d3">Sources · Bali Home Immo Q1 2025 · Bukit Vista 2024–25</div>
+  </div>
+</section>
+
+<!-- RENDERS gallery -->
+<section class="renders" id="renders">
+  <div class="renders__intro">
+    <div class="eb fade">The vision</div>
+    <h2 class="fade d1">Sculpted architecture where greenery becomes <em>part of the building.</em></h2>
+  </div>
+
+  <div class="render fade">
+    <img class="render__img" src="https://pauly-ceo.github.io/ananta-canggu-assets/render-facade.jpg" alt="Ananta facade at dusk — terracotta organic architecture with bougainvillea cascading rooflines" loading="lazy">
+    <div class="render__cap">The facade · at dusk</div>
+  </div>
+
+  <div class="render render--split fade">
+    <div>
+      <img src="https://pauly-ceo.github.io/ananta-canggu-assets/render-bedroom.jpg" alt="Bedroom — organic windows framing palms and morning light" loading="lazy">
+    </div>
+    <div>
+      <img src="https://pauly-ceo.github.io/ananta-canggu-assets/render-rooftop.jpg" alt="Rooftop infinity pool — glass edge facing the sunset" loading="lazy">
+    </div>
+  </div>
+
+  <div class="render fade">
+    <img class="render__img" src="https://pauly-ceo.github.io/ananta-canggu-assets/render-palms.jpg" alt="Padang Linjong — Canggu, Bali" loading="lazy">
+    <div class="render__cap">The setting · Padang Linjong, Canggu</div>
+  </div>
+
+  <div class="renders__outro"></div>
 </section>
 
 <!-- CREDITS -->
@@ -480,7 +605,8 @@
       <ul class="invest__bullets">
         <li>Proportional share of net resort revenue after operating costs</li>
         <li>Leasehold to 2050 + 30-year extension</li>
-        <li>Phase 1 pricing from $199,000 · 30/40/25/5 payment schedule</li>
+        <li>Phase 1 VIP pricing −4 % for first 9 buyers · prices step with sell-through</li>
+        <li>From $191,000 · standard 30 / 40 / 30 milestone schedule (or full cash −5 %)</li>
         <li>Detailed pro-forma and unit availability on request</li>
       </ul>
       <a href="https://pauly-ceo.github.io/ananta-canggu-assets/Ananta_Investor_Pack.pdf" target="_blank" rel="noopener" class="link invest__cta">
@@ -499,7 +625,7 @@
       <div class="numbers__cell fade"><p class="numbers__big">36</p><div class="numbers__cap">Residences</div></div>
       <div class="numbers__cell fade d1"><p class="numbers__big">3</p><div class="numbers__cap">Buildings</div></div>
       <div class="numbers__cell fade d2"><p class="numbers__big">12·12·12</p><div class="numbers__cap">Type A · B · C mix</div></div>
-      <div class="numbers__cell fade d3"><p class="numbers__big">$199K<small>+</small></p><div class="numbers__cap">Phase 1 from</div></div>
+      <div class="numbers__cell fade d3"><p class="numbers__big">$191K<small>+</small></p><div class="numbers__cap">Phase 1 from</div></div>
       <div class="numbers__cell fade d3"><p class="numbers__big">30·40·30</p><div class="numbers__cap">Payment schedule</div></div>
     </div>
   </div>
