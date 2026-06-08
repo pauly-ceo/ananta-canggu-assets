@@ -116,6 +116,14 @@
   .hero__scroll-line{width:1px;height:42px;background:rgba(255,255,255,.6);animation:scrollPulse 2.6s var(--ease) infinite}
   @keyframes scrollPulse{0%,100%{transform:scaleY(.4);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}}
   .hero__meta{text-align:right;line-height:1.8}
+  .hero__pack{
+    display:inline-flex;align-items:center;gap:10px;margin-top:38px;
+    font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+    color:#fff;padding-bottom:5px;border-bottom:1px solid rgba(255,255,255,.6);
+    transition:opacity var(--t-base) var(--ease), gap var(--t-base) var(--ease), border-color var(--t-base);
+  }
+  .hero__pack:hover{opacity:.8;gap:14px;border-color:#fff}
+  .hero__pack-meta{font-weight:400;letter-spacing:.16em;opacity:.7;margin-left:4px}
 
   /* SOUND TOGGLE */
   .sound{
@@ -397,6 +405,7 @@
   }
   .contact__direct a{border-bottom:1px solid var(--ink-30);padding-bottom:2px}
   .contact__direct a:hover{border-color:var(--ink)}
+  .contact__pack{margin-top:32px;font-size:11px;color:var(--ink-70)}
   @media(max-width:860px){
     .contact__grid{grid-template-columns:1fr;gap:48px}
     .contact__portrait{aspect-ratio:3/4;max-width:360px;margin:0 auto}
@@ -453,6 +462,10 @@
       <div class="hero__eyebrow">Canggu · Bali · Keys Q2 2028</div>
       <h1 class="hero__h1">Three buildings.<br><em>Thirty-six homes.</em><br>One Bali.</h1>
       <p class="hero__sub">Organic-architecture residences in Canggu — for owners who split their year between continents and want a home that earns while they're gone.</p>
+      <a href="https://pauly-ceo.github.io/ananta-canggu-assets/Ananta_Investor_Pack.pdf" target="_blank" rel="noopener" class="hero__pack">
+        Download investor pack <span class="hero__pack-meta">PDF · 23 pages</span>
+        <span class="link__arrow">→</span>
+      </a>
     </div>
     <div class="hero__bottom">
       <div class="hero__scroll"><span>Scroll</span><span class="hero__scroll-line"></span></div>
@@ -645,14 +658,17 @@
         <strong>Dr. Kristýna Pauly</strong>
         <span class="contact__role">CEO · MyResorts Bali</span>
       </div>
-      <a href="mailto:kristyna@myresorts.eu?subject=Ananta%20Canggu%20%E2%80%94%20Inquiry" class="link contact__cta">
+      <a href="mailto:kristyna.pauly@myresorts.eu?subject=Ananta%20Canggu%20%E2%80%94%20Inquiry" class="link contact__cta">
         Write to Kristýna
         <span class="link__arrow">→</span>
       </a>
       <div class="contact__direct">
-        <a href="mailto:kristyna@myresorts.eu">kristyna@myresorts.eu</a>
-        <a href="https://wa.me/420721833114">WhatsApp +420 721 833 114</a>
+        <a href="mailto:kristyna.pauly@myresorts.eu">kristyna.pauly@myresorts.eu</a>
+        <a href="https://wa.me/420739685681">WhatsApp +420 739 685 681</a>
       </div>
+      <a href="https://pauly-ceo.github.io/ananta-canggu-assets/Ananta_Investor_Pack.pdf" target="_blank" rel="noopener" class="link contact__pack">
+        Or download the investor pack first <span class="link__arrow">→</span>
+      </a>
     </div>
   </div>
 </section>
