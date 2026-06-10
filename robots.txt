@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pauly-ceo.github.io/ananta-canggu-assets/sitemap.xml
